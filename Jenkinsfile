@@ -41,7 +41,7 @@ pipeline {
         stage('Code Compilation') {
             steps {
                 echo 'Hello, Maven'
-                sh 'java -version'
+                sh 'javac -version'
             }
         }
         stage('Sonar Inspection') {
