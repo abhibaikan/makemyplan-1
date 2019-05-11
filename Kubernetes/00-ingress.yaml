@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: makemytrip-ms
+    environment: staging
+    pki: v01
+    tier: backend
+  name: pkiv01-staging-makemytrip-ms
+  namespace: staging
+spec:
+  rules:
+    - host: pkiv01-staging-makemytrip-ms.projectname.aws.cps.tcscompany.com
+      http:
+        paths:
+          - backend:
+              serviceName: staging-makemytrip-ms
+              servicePort: 8080
+            path: /
+          - backend:
+              serviceName: staging-makemytrip-ms
+              servicePort: 8080
+            path: /actuator/health
+  tls:
+    - hosts:
+        - pkiv01-staging-makemytrip-ms.projectname.aws.cps.vodafone.com
+      secretName: pkiv01-ingress-secrets
